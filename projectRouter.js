@@ -3,6 +3,7 @@ const actionHelpers = require("./data/helpers/actionModel");
 const projectHelpers = require("./data/helpers/projectModel");
 const projectRouter = express.Router();
 
+//Gets all projects from localhost:5000/api/projects
 projectRouter.get("/", (req, res) => {
   projectHelpers
     .get()
@@ -14,6 +15,7 @@ projectRouter.get("/", (req, res) => {
     });
 });
 
+//Creates new project at localhost:5000/api/projects
 projectRouter.post("/", (req, res) => {
   projectHelpers
     .insert(req.body)
@@ -25,6 +27,7 @@ projectRouter.post("/", (req, res) => {
     });
 });
 
+// Modifies a specified project (name and description)
 projectRouter.put("/:id", (req, res) => {
   projectHelpers
     .update(req.params.id, req.body)
@@ -36,6 +39,7 @@ projectRouter.put("/:id", (req, res) => {
     });
 });
 
+// Deletes specified project
 projectRouter.delete("/:id", (req, res) => {
   projectHelpers
     .remove(req.params.id)
@@ -47,6 +51,7 @@ projectRouter.delete("/:id", (req, res) => {
     });
 });
 
+// Get request for specified actions
 projectRouter.get("/:id", (req, res) => {
   projectHelpers
     .getProjectActions(req.params.id)
