@@ -3,19 +3,6 @@ const actionHelpers = require("./data/helpers/actionModel");
 const projectHelpers = require("./data/helpers/projectModel");
 const projectRouter = express.Router();
 
-// router.get("/", (req, res) => {
-//     Posts.find() //Notice that the find() helper function does NOT take a parameter in db.js!!!
-//       .then((post) => {
-//         res.status(200).json(post);
-//       })
-//       .catch((err) => {
-//         res
-//           .status(500)
-//           .json({ error: "The posts information could not be retrieved." });
-//       });
-//   });
-
-// base url is /api/projects
 projectRouter.get("/", (req, res) => {
   projectHelpers
     .get()
@@ -39,8 +26,8 @@ projectRouter.post("/", (req, res) => {
 });
 
 projectRouter.put("/:id", (req, res) => {
-  projectModel
-    .update(req.params.id, req.body.name)
+  projectHelpers
+    .update(req.params.id, req.body)
     .then((modifiedName) => {
       res.status(201).json(modifiedName);
     })
