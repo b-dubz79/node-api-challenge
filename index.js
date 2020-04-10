@@ -1,8 +1,37 @@
+const projectRouter = require('./projectRouter')
+const actionRouter = require('./actionRouter')
+
+const express = require('express');
+const server = express();
+server.use(express.json());
+
+server.use('/api/projects', projectRouter)
+server.use('/api/projects/:project_id/actions', actionRouter)
+
+server.listen(5000, () => {
+    console.log('Server is running on http://localhost:5000')
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
-play this: https://www.youtube.com/watch?v=d-diB65scQU
-
-Sing along:
-
 here's a little code I wrote, please read the README word for word, don't worry, you got this
 in every task there may be trouble, but if you worry you make it double, don't worry, you got this
 ain't got no sense of what is REST? just concentrate on learning Express, don't worry, you got this
