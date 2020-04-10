@@ -1,9 +1,12 @@
-const actionsRouter = require('./router')
+const projectRouter = require('./projectRouter')
+const actionRouter = require('./projectRouter')
+
 const express = require('express');
 const server = express();
 server.use(express.json());
 
-
+server.use('/api/projects', projectRouter)
+server.use('/api/projects/:id/actions', actionRouter)
 
 server.listen(5000, () => {
     console.log('Server is running on http://localhost:5000')
